@@ -38,7 +38,9 @@ first(names, function(firstName){
 });
 // Do not edit the code above.
 
-
+function first(arr, cb){
+  cb(arr[0])
+}
 
 ////////// PROBLEM 2 //////////
 
@@ -48,6 +50,13 @@ first(names, function(firstName){
 */
 
 //Code Here
+function last(arr, cb){
+  for(let i=0; i <arr.length; i++){
+    if (i === arr.length - 1) {
+      cb(arr[i])
+    }
+  }
+}
 
 // Do not edit the code below.
 last(names, function(lastName){
@@ -72,7 +81,9 @@ multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
 });
 // Do not edit the code above.
-
+function multiply(num1, num2, cb){
+  cb(num1*num2)
+}
 
 
 ////////// PROBLEM 4 //////////
@@ -85,7 +96,13 @@ multiply(4, 3, function(answer){
 */
 
 //Code Here 
-
+function contains(arr, name, cb){
+  if(arr.includes(name)){
+    return cb(true)
+  }else {
+    return cb(false)
+  }
+}
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
   if(result === true){
@@ -106,6 +123,9 @@ contains(names, 'Colt', function(result){
 */
 
 //Code Here
+const uniq = (arr, cb) => {
+  cb([...new Set(arr)])
+}
 
 // Do not edit the code below.
 uniq(names, function(uniqArr){
@@ -123,6 +143,12 @@ uniq(names, function(uniqArr){
 */
 
 //Code Here 
+function each(arr,cb) {
+  for(let i = 0; i < arr.length; i++) {
+    cb(arr[i], i);
+  }
+}
+
 
 // Do not edit the code below.
 each(names, function(item, indice){
@@ -135,11 +161,21 @@ each(names, function(item, indice){
 ////////// PROBLEM 7 //////////
 
 /*
-  Write a function called getUserById that takes in three parameters: an array of objects (users), an id and a callback, and searches for the user with a matching id.
+  Write a function called getUserById that takes in three parameters: an array of objects (users), 
+  an id and a callback, and searches for the user with a matching id.
   When the correct user object is found, invoke the callback with the user object as an argument.
 */
 
 // Code here
+
+const getUserById = (arr, id, cb) => {
+  for(let i = 0; i < arr.length; i++){
+    if(arr[i].id === id){
+      cb(arr[i])
+    }
+  }
+}
+
 
 // Do not edit the code below.
 var users = [
